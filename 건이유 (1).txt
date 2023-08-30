@@ -1,40 +1,62 @@
 ﻿
 void setup()
 {
-LcdBackLight()
-
+	LcdBackLight()
+	
 	
 }
 float t=0
 c=0
+
 
 void loop()
 {
 	a0 = AnalogRead(0)
 	if (a0>=600&&a0<=700)
 	{
-LcdClear()
+		LcdClear()
 		Tone(2, 349,200)
-	Delay(1000)
-Tone(2, 349,200)
-Delay(1000)
-Tone(2, 349,200)
-Delay(1000)
-Tone(2, 532,500)
-Delay(500)
-
+		Delay(1000)
+		Tone(2, 349,200)
+		Delay(1000)
+		Tone(2, 349,200)
+		Delay(1000)
+		Tone(2, 532,500)
+		
+		
 		while (1)
 		{
+			
 			t= t+0.01
-			Delay(2)
+			Delay(0.72)
 			LcdClear()
-			LcdPrint(t)
+		    LcdPrint(t)
 			a0 = AnalogRead(0)
 			if (a0>= 500&& a0<=600)
 			{
 				PrintLine(t)
-				t=0
-				break
+				if(t>=9.5&&t<=10.5)
+				{
+					Tone(2, 330,200)
+					Delay(300)
+					Tone(2, 440,200)
+					Delay(300)
+					Tone(2, 554,200)
+					Delay(300)
+					Tone(2, 659,200)
+					Delay(300)
+					Tone(2, 880,200)
+					Delay(300)
+					t=0
+					break
+				}
+				else
+				{
+					Tone(2, 880,600)
+					t=0
+					break
+				}
+				
 			}
 		}
 	}
